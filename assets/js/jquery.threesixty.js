@@ -72,10 +72,12 @@ var scope,
 ////////////////////////////////////////////////////////////////////////////////////////////
             $this.find('.mascaras').css({display: 'none'});
             $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.mascaras').css({display: 'none'});
-            $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
 
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.highlights_blue').css({display: 'none'});
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.highlights_red').css({display: 'none'});
+     
 
 
 
@@ -104,6 +106,16 @@ var scope,
 
             $this.find('.threesixty-frame').css({display: 'none'});
             $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.mascaras').css({display: 'none'});
+            $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.highlights_blue').css({display: 'none'});
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.highlights_red').css({display: 'none'});
+      
 
 
 
@@ -213,9 +225,9 @@ html += '<img class="mascaras" alt="'+i+'"   crossOrigin = "Anonymous"  style="d
 
 }
 
-html += '<img class="highlights_blue" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + path_highlights_blue+''+i+extencion+'"/>';
+html += '<img class="highlights_blue" style="display:' + none + ';" data-index="' + i + '"  id="highlights_blue_' + i + '" src="' + path_highlights_blue+''+i+extencion+'"/>';
 
-html += '<img class="highlights_red" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + path_highlights_red+''+i+extencion+'"/>';
+html += '<img class="highlights_red" style="display:' + none+ ';" data-index="' + i + '"  id="highlights_red_' + i + '" src="' + path_highlights_red+''+i+extencion+'"/>';
 
 
 
@@ -358,10 +370,9 @@ html += '<img class="highlights_red" style="display:' + display + ';" data-index
             $downElem.find('.mascaras:eq(' + val + ')').attr("id","true")
 ///////////////////////////////////////////////////////////////////////////////////////////////
             $downElem.find('.highlights_blue').css({display: 'none'});
-            $downElem.find('.highlights_blue:eq(' + val + ')').css({display: 'block'});
+       
 ///////////////////////////////////////////////////////////////////////////////////////////////
             $downElem.find('.highlights_red').css({display: 'none'});
-            $downElem.find('.highlights_red:eq(' + val + ')').css({display: 'block'});
 
 
 
@@ -415,28 +426,47 @@ var hex =rgbToHex(r, g, b);
 if (hex=="#ed8e8f") {
 
 
+var id = img.alt; 
+var url="highlights_red_";
 
-alert("color rojo, frame"+ img.alt)
+var highlights_red = document.getElementById(url+id);
+highlights_red.style.display = "block";
+
 
 
 }
 else
 {
 
+var id = img.alt; 
+var url="highlights_red_";
+
+var highlights_red = document.getElementById(url+id);
+    
+highlights_red.style.display = "none";
+
+
 }
+
 
 
 
 if (hex=="#6f9c9f") {
+var id = img.alt; 
+var url="highlights_blue_";
 
-
-alert("color azul, frame"+img.alt)
-
+var highlights_blue = document.getElementById(url+id);
+highlights_blue.style.display = "block";
 
 
 }
 else {
+var id = img.alt; 
+var url="highlights_blue_";
 
+var highlights_blue = document.getElementById(url+id);
+
+highlights_blue.style.display = "none";
 
 }
 
@@ -450,6 +480,11 @@ else {
 
 
 }
+
+
+
+
+
 
 
 

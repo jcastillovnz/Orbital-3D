@@ -21,9 +21,9 @@ width:58%;
 
 
 	position: absolute;
- z-index: 7;
+ z-index: 2;
 
-
+display: none;
 
 }
 
@@ -37,8 +37,9 @@ width:58%;
 
 
 	position: absolute;
- z-index: 7;
+ z-index: 3;
 
+display: none;
 
 }
 
