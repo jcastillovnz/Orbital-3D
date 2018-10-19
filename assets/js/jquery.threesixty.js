@@ -69,6 +69,16 @@ var scope,
 
             $this.find('.threesixty-frame').css({display: 'none'});
             $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.mascaras').css({display: 'none'});
+            $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+
+
+
+
+
+
+
         });
     };
 
@@ -90,6 +100,15 @@ var scope,
 
             $this.find('.threesixty-frame').css({display: 'none'});
             $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
+/////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.mascaras').css({display: 'none'});
+            $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+
+
+
+
+
+
         });
     };
 
@@ -133,6 +152,9 @@ var scope,
             for(j; j < data[i].count; j++){
                 url = data[i].path.replace('{index}', j);
                 $('<img/>').data('index', i).attr('src', url).load(this.onLoadComplete);
+             
+
+
             }
         }
     };
@@ -160,7 +182,18 @@ var scope,
         // add 360 images
         for(i; i < l; i++){
             var display = (i === 0) ? 'block' : 'none';
-            html += '<img class="threesixty-frame" style="display:' + display + ';" data-index="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
+
+path_mascaras="assets/img/masks/"
+extencion=".png"
+
+
+html += '<img class="threesixty-frame" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+html += '<img class="mascaras" style="display:' + display + ';" data-index="' + i + '"  id="mascaras" src="' + path_mascaras+''+i+extencion+'"/>';
+
+
+
+
         }
         $this.html(html);
 
@@ -283,6 +316,13 @@ var scope,
 
             $downElem.find('.threesixty-frame').css({display: 'none'});
             $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
+
+/////////////////////////////////////////////////////////////////////////////////////////
+ $downElem.find('.mascaras').css({display: 'none'});
+            $downElem.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+
+
+
         }
     };
 

@@ -2888,13 +2888,13 @@ body h3 {
   font-size: 1.2em;
 }
 /* line 39, ../../scss/main.scss */
-body .threesixty-wrapper {
+body .threesixty-wrapper  {
   margin: 30px auto;
   width: 960px;
   position: relative;
 }
 /* line 43, ../../scss/main.scss */
-body .threesixty-wrapper .threesixty {
+body .threesixty-wrapper .threesixty  {
   display: block;
   width: 960px;
   height: 540px;
@@ -2916,7 +2916,7 @@ body .threesixty-wrapper .threesixty .ui-spinner .side .fill {
   opacity: 0.8;
 }
 /* line 39, ../../scss/_ui-spinner.scss */
-body .threesixty-wrapper .threesixty .ui-spinner:after {
+body .threesixty-wrapper .threesixty  .ui-spinner:after {
   content: "";
   background: transparent;
   position: absolute;
@@ -2928,11 +2928,11 @@ body .threesixty-wrapper .threesixty .ui-spinner:after {
   display: block;
 }
 /* line 49, ../../scss/main.scss */
-body .threesixty-wrapper .threesixty .ui-spinner {
+body .threesixty-wrapper .threesixty .ui-spinner  {
   margin: 270px auto;
 }
 /* line 54, ../../scss/main.scss */
-body .threesixty-wrapper .label {
+body .threesixty-wrapper .label  {
   margin: 20px auto;
   display: block;
 }
