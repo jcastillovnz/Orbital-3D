@@ -181,7 +181,7 @@ var scope,
 
         // add 360 images
         for(i; i < l; i++){
-            var display = (i === 0) ? 'block' : 'none';
+var display = (i === 0) ? 'block' : 'none';
 
 path_mascaras="assets/img/masks/"
 extencion=".png"
@@ -189,7 +189,16 @@ extencion=".png"
 
 html += '<img class="threesixty-frame" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-html += '<img class="mascaras" style="display:' + display + ';" data-index="' + i + '"  id="mascaras" src="' + path_mascaras+''+i+extencion+'"/>';
+html += '<img class="mascaras" style="display:' + display + ';" id="masks_' + i + '"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
+
+////////////////////////////////
+///DETECCION DE COLOR EN MASCARA
+
+
+
+
+
+
 
 
 
@@ -318,13 +327,111 @@ html += '<img class="mascaras" style="display:' + display + ';" data-index="' + 
             $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
 
 /////////////////////////////////////////////////////////////////////////////////////////
- $downElem.find('.mascaras').css({display: 'none'});
-            $downElem.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+            $downElem.find('.mascaras').css({display: 'none'});
+///////////////////////////////desactivar mascara/////////////////////////////////////////////////////
+    $downElem.find('.mascaras').css({display: 'none'}).attr("id","false")  ;
+    $downElem.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+///////////////////////////////activar mascara/////////////////////////////////////////////////////
+     $downElem.find('.mascaras:eq(' + val + ')').attr("id","true")
+             
+
+
+var url =document.getElementById('true').src;
+detectar_color (url)
+;
 
 
 
         }
     };
+
+
+function detectar_color(url) {
+
+
+
+const img= document.getElementById('mascara');
+const output= document.getElementById('output');
+
+img.addEventListener('mousemove', function (e) {
+  let ctx;
+  if(!this.canvas) {
+      this.canvas = document.createElement('canvas');
+      this.canvas.width = this.width;
+      this.canvas.height = this.height;
+      ctx=this.canvas.getContext('2d');
+      ctx.drawImage(this, 0, 0, this.width, this.height);
+  } else {
+
+    ctx=this.canvas.getContext('2d');
+
+  }
+
+  const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
+        
+
+        /*
+  output.innerHTML ='R: ' + pixel[0] + '<br>G: ' + pixel[1] +
+      '<br>B: ' + pixel[2] + '<br>A: ' + pixel[3];
+*/
+
+
+
+
+//Covierto Color RGBA a Hexadecimal
+r=pixel[0] ;
+g=pixel[1] ;
+b=pixel[2] ;
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+
+
+var hex =rgbToHex(r, g, b);
+
+
+alert(hex);
+
+
+if (hex == "#31c531") {
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+                
+});
+
+
+
+
+
+
+
+}
+
+
+
+
 
     ThreeSixty.prototype.onKeyDown = function(e) {
         switch(e.keyCode){
@@ -374,3 +481,8 @@ html += '<img class="mascaras" style="display:' + display + ';" data-index="' + 
     };
 
 })( jQuery, window, document );
+
+
+
+
+
