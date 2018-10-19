@@ -12,6 +12,45 @@ display:block;
 
 }
 
+.highlights_blue{
+
+width:58%;
+
+	margin:10px auto;
+	display:block;
+
+
+	position: absolute;
+ z-index: 7;
+
+
+
+}
+
+
+.highlights_red{
+
+width:58%;
+
+	margin:10px auto;
+	display:block;
+
+
+	position: absolute;
+ z-index: 7;
+
+
+}
+
+
+
+
+
+
+
+
+
+
 .mascaras{
 
 width:58%;

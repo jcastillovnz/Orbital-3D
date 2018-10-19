@@ -72,6 +72,10 @@ var scope,
 ////////////////////////////////////////////////////////////////////////////////////////////
             $this.find('.mascaras').css({display: 'none'});
             $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+////////////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.mascaras').css({display: 'none'});
+            $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+
 
 
 
@@ -100,10 +104,6 @@ var scope,
 
             $this.find('.threesixty-frame').css({display: 'none'});
             $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-/////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.mascaras').css({display: 'none'});
-            $this.find('.mascaras:eq(' + val + ')').css({display: 'block'});
-
 
 
 
@@ -182,17 +182,40 @@ var scope,
         // add 360 images
         for(i; i < l; i++){
 var display = (i === 0) ? 'block' : 'none';
+var none = 'none'
 
-path_mascaras="assets/img/masks/"
+
+path_mascaras="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/assets/img/masks/"
+
+path_highlights_blue="assets/img/highlights/blue/"
+path_highlights_red="assets/img/highlights/red/"
 extencion=".png"
 
 
-html += '<img class="threesixty-frame" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-html += '<img class="mascaras" style="display:' + display + ';" id="masks_' + i + '"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
 
-////////////////////////////////
-///DETECCION DE COLOR EN MASCARA
+html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+if (i==0) {
+
+html += '<img class="mascaras" alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
+
+
+}
+
+else
+{
+html += '<img class="mascaras" alt="'+i+'"   crossOrigin = "Anonymous"  style="display:' + display + ';" id="false"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
+
+
+}
+
+html += '<img class="highlights_blue" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + path_highlights_blue+''+i+extencion+'"/>';
+
+html += '<img class="highlights_red" style="display:' + display + ';" data-index="' + i + '"  id="' + i + '" src="' + path_highlights_red+''+i+extencion+'"/>';
 
 
 
@@ -329,31 +352,41 @@ html += '<img class="mascaras" style="display:' + display + ';" id="masks_' + i 
 /////////////////////////////////////////////////////////////////////////////////////////
             $downElem.find('.mascaras').css({display: 'none'});
 ///////////////////////////////desactivar mascara/////////////////////////////////////////////////////
-    $downElem.find('.mascaras').css({display: 'none'}).attr("id","false")  ;
-    $downElem.find('.mascaras:eq(' + val + ')').css({display: 'block'});
+            $downElem.find('.mascaras').css({display: 'none'}).attr("id","false")  ;
+            $downElem.find('.mascaras:eq(' + val + ')').css({display: 'block'});
 ///////////////////////////////activar mascara/////////////////////////////////////////////////////
-     $downElem.find('.mascaras:eq(' + val + ')').attr("id","true")
-             
+            $downElem.find('.mascaras:eq(' + val + ')').attr("id","true")
+///////////////////////////////////////////////////////////////////////////////////////////////
+            $downElem.find('.highlights_blue').css({display: 'none'});
+            $downElem.find('.highlights_blue:eq(' + val + ')').css({display: 'block'});
+///////////////////////////////////////////////////////////////////////////////////////////////
+            $downElem.find('.highlights_red').css({display: 'none'});
+            $downElem.find('.highlights_red:eq(' + val + ')').css({display: 'block'});
 
 
-var url =document.getElementById('true').src;
-detectar_color (url)
-;
+
+
+
+detectar_color ();
 
 
 
         }
     };
 
+window.onload = function () {
 
-function detectar_color(url) {
+detectar_color ();
+
+}
 
 
+function detectar_color() {
 
-const img= document.getElementById('mascara');
-const output= document.getElementById('output');
-
+var img= document.getElementById('true');
 img.addEventListener('mousemove', function (e) {
+
+
   let ctx;
   if(!this.canvas) {
       this.canvas = document.createElement('canvas');
@@ -362,63 +395,52 @@ img.addEventListener('mousemove', function (e) {
       ctx=this.canvas.getContext('2d');
       ctx.drawImage(this, 0, 0, this.width, this.height);
   } else {
-
     ctx=this.canvas.getContext('2d');
-
   }
-
-  const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
-        
-
-        /*
-  output.innerHTML ='R: ' + pixel[0] + '<br>G: ' + pixel[1] +
-      '<br>B: ' + pixel[2] + '<br>A: ' + pixel[3];
-*/
-
-
-
-
+const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 //Covierto Color RGBA a Hexadecimal
 r=pixel[0] ;
 g=pixel[1] ;
 b=pixel[2] ;
-
 function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
-
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
-
-
-
 var hex =rgbToHex(r, g, b);
 
 
-alert(hex);
-
-
-if (hex == "#31c531") {
+if (hex=="#ed8e8f") {
 
 
 
+alert("color rojo, frame"+ img.alt)
+
+
+}
+else
+{
 
 }
 
 
 
+if (hex=="#6f9c9f") {
+
+
+alert("color azul, frame"+img.alt)
 
 
 
+}
+else {
 
 
+}
 
-
-
-
-                
+               
 });
 
 
@@ -481,6 +503,11 @@ if (hex == "#31c531") {
     };
 
 })( jQuery, window, document );
+
+
+
+
+
 
 
 
