@@ -486,15 +486,42 @@ var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
 
-document.getElementById("true").addEventListener("click","ontouchstart" function(event) {
+
+
+
+
+document.getElementById("true").addEventListener("touchstart", function(event) {
+//event.stopImmediatePropagation();
+alert("hola");
+
+event.stopImmediatePropagation();
+
+});
+
+
+
+document.getElementById("true").addEventListener("click", function(event) {
 //event.stopImmediatePropagation();
   window.open('http://www.facebook.com','_blank');
 
 event.stopImmediatePropagation();
 
-
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 else {
