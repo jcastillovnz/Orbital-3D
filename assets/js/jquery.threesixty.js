@@ -467,6 +467,8 @@ event.stopImmediatePropagation();
 else
 {
 
+
+event="";
 var id = img.alt; 
 var url="highlights_red_";
 var highlights_red = document.getElementById(url+id);
@@ -484,9 +486,8 @@ var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
 
-document.getElementById("true").addEventListener("click", function(event) {
+document.getElementById("true").addEventListener("click","ontouchstart" function(event) {
 //event.stopImmediatePropagation();
-
   window.open('http://www.facebook.com','_blank');
 
 event.stopImmediatePropagation();
@@ -497,11 +498,14 @@ event.stopImmediatePropagation();
 
 }
 else {
-
+event="";
 var id = img.alt; 
 var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "none";
+
+
+
 
 }
 
