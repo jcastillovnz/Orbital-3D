@@ -444,20 +444,24 @@ var highlights_red = document.getElementById(url+id);
 highlights_red.style.display = "block";
 
 
+document.getElementById("true").addEventListener("touchstart", function(event) {
+//event.stopImmediatePropagation();
+alert("Rojo");
+event.stopImmediatePropagation();
+
+
+});
+
+
 
 document.getElementById("true").addEventListener("click", function( event ) {
 
 var x= event.type;
 console.log("rojo")
-
-
   window.open('http://www.google.com','_blank');
 
 event.stopImmediatePropagation();
 //event.stopPropagation();
-
-
-
 
 });
 
@@ -492,9 +496,9 @@ highlights_blue.style.display = "block";
 
 document.getElementById("true").addEventListener("touchstart", function(event) {
 //event.stopImmediatePropagation();
-alert("hola");
-
+alert("azul");
 event.stopImmediatePropagation();
+
 
 });
 

@@ -14,13 +14,13 @@
                 $('.next').click(function(){
                     $threeSixty.nextFrame();
 
-                    detectar_color();
+                   
                    
                 });
 
                 $('.prev').click(function(){
                     $threeSixty.prevFrame();
-                  detectar_color();
+                
 
 
 
