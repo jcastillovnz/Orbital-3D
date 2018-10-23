@@ -13,10 +13,17 @@
 
                 $('.next').click(function(){
                     $threeSixty.nextFrame();
+
+                    detectar_color();
+                   
                 });
 
                 $('.prev').click(function(){
                     $threeSixty.prevFrame();
+                  detectar_color();
+
+
+
                 });
 
                 $threeSixty.on('down', function(){
@@ -26,7 +33,10 @@
                 $threeSixty.on('up', function(){
                     $('.ui, h1, h2, .label, .examples').stop().animate({opacity:1}, 500);
                 });
+
+
             });
+
 
 
 

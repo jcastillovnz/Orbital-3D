@@ -6,7 +6,13 @@
  * Licensed under the Apache License Version 2.0
  */
 
-;(function ( $, window, document, undefined ) {
+
+$(document).ready(function(){
+
+
+
+
+(function ( $, window, document, undefined ) {
 
 
 var scope,
@@ -79,7 +85,7 @@ var scope,
             $this.find('.highlights_red').css({display: 'none'});
      
 
-
+detectar_color ();
 
 
 
@@ -116,6 +122,7 @@ var scope,
 ////////////////////////////////////////////////////////////////////////////////////////////
             $this.find('.highlights_red').css({display: 'none'});
       
+detectar_color ();
 
 
 
@@ -280,7 +287,13 @@ html += '<img class="highlights_red" style="display:' + none+ ';" data-index="' 
             lastX = $downElem.data('lastX') || 0;
             lastY = $downElem.data('lastY') || 0;
             isMouseDown = true;
+            detectar_color ();
+
             $downElem.trigger('down');
+
+
+
+
         });
 
         // arrow keys
@@ -388,14 +401,15 @@ detectar_color ();
 window.onload = function () {
 
 detectar_color ();
-
 }
 
 
 function detectar_color() {
+  
 
 var img= document.getElementById('true');
 img.addEventListener('mousemove', function (e) {
+
 
 
   let ctx;
@@ -428,21 +442,31 @@ if (hex=="#ed8e8f") {
 
 var id = img.alt; 
 var url="highlights_red_";
-
 var highlights_red = document.getElementById(url+id);
 highlights_red.style.display = "block";
+
+
+event.preventDefault();
+document.getElementById("true").addEventListener("click", function( event ) {
+event.stopImmediatePropagation();
+var x= event.type;
+alert("ES ROJO, AQUI SUCEDERA UNA ACCION PROGRAMABLE"+x);
+
+
+});
+
+
+
+
 
 
 
 }
 else
 {
-
 var id = img.alt; 
 var url="highlights_red_";
-
 var highlights_red = document.getElementById(url+id);
-    
 highlights_red.style.display = "none";
 
 
@@ -450,25 +474,37 @@ highlights_red.style.display = "none";
 
 
 
-
 if (hex=="#6f9c9f") {
+ 
 var id = img.alt; 
 var url="highlights_blue_";
-
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
 
+event.preventDefault();
+document.getElementById("true").addEventListener("click", function(event) {
+event.stopImmediatePropagation();
+
+var x= event.type;
+alert(hex+x);
+
+
+
+});
 
 }
 else {
+
 var id = img.alt; 
 var url="highlights_blue_";
-
 var highlights_blue = document.getElementById(url+id);
-
 highlights_blue.style.display = "none";
 
 }
+
+
+
+
 
                
 });
@@ -489,14 +525,16 @@ highlights_blue.style.display = "none";
 
 
 
-
     ThreeSixty.prototype.onKeyDown = function(e) {
         switch(e.keyCode){
             case 37: // left
                 $el.prevFrame();
+                $el.detectar_color();
                 break;
             case 39: // right
                 $el.nextFrame();
+
+                $el.detectar_color();
                 break;
         }
     };
@@ -504,6 +542,14 @@ highlights_blue.style.display = "none";
     ThreeSixty.prototype.onMouseUp = function(e) {
         isMouseDown = false;
         $downElem.trigger('up');
+
+     
+
+
+
+
+
+
     };
 
     /**
@@ -547,4 +593,5 @@ highlights_blue.style.display = "none";
 
 
 
+  });
 
