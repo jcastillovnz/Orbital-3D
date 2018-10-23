@@ -6,9 +6,7 @@
  * Licensed under the Apache License Version 2.0
  */
 
-
 $(document).ready(function(){
-
 
 
 
@@ -85,8 +83,7 @@ var scope,
             $this.find('.highlights_red').css({display: 'none'});
      
 
-detectar_color ();
-
+              canvas();
 
 
 
@@ -122,7 +119,7 @@ detectar_color ();
 ////////////////////////////////////////////////////////////////////////////////////////////
             $this.find('.highlights_red').css({display: 'none'});
       
-detectar_color ();
+canvas();
 
 
 
@@ -287,10 +284,10 @@ html += '<img class="highlights_red" style="display:' + none+ ';" data-index="' 
             lastX = $downElem.data('lastX') || 0;
             lastY = $downElem.data('lastY') || 0;
             isMouseDown = true;
-            detectar_color ();
+         
 
             $downElem.trigger('down');
-
+  canvas();
 
 
 
@@ -321,12 +318,17 @@ html += '<img class="highlights_red" style="display:' + none+ ';" data-index="' 
         lastY = $downElem.data('lastY') || 0;
         isMouseDown = true;
         $downElem.trigger('down');
+
+
+        canvas();
     };
 
     ThreeSixty.prototype.onTouchMove = function(e) {
         e.preventDefault();
         var touch = e.touches[0];
         scope.onMove(touch.pageX, touch.pageY);
+
+        canvas();
     };
 
     ThreeSixty.prototype.onTouchEnd = function(e) {
@@ -388,28 +390,32 @@ html += '<img class="highlights_red" style="display:' + none+ ';" data-index="' 
             $downElem.find('.highlights_red').css({display: 'none'});
 
 
-
-
-
-detectar_color ();
+canvas();
 
 
 
         }
     };
 
-window.onload = function () {
-
-detectar_color ();
-}
 
 
-function detectar_color() {
-  
+
+
+
+window.onload = function(e) {
+
+
+canvas(e);
+
+
+  }
+
+
+function canvas(e) {
+
 
 var img= document.getElementById('true');
 img.addEventListener('mousemove', function (e) {
-
 
 
   let ctx;
@@ -423,10 +429,34 @@ img.addEventListener('mousemove', function (e) {
     ctx=this.canvas.getContext('2d');
   }
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
+
+
+
+detectar_color(ctx,e,img);
+
+               
+});
+
+
+
+
+
+}
+
+
+
+
+
+function detectar_color(ctx,e,img) {
+////DETECTAR COLORES
 //Covierto Color RGBA a Hexadecimal
+const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
+
+
 r=pixel[0] ;
 g=pixel[1] ;
 b=pixel[2] ;
+
 function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
@@ -437,42 +467,42 @@ function rgbToHex(r, g, b) {
 var hex =rgbToHex(r, g, b);
 
 
-if (hex=="#ed8e8f") {
+deteccion_click_en_mascara(hex, img, event)
+
+
+
+
+}
+
+
+
+function deteccion_click_en_mascara(hex, img, event) {
+ 
+event.preventDefault();
+
+
+if (hex==="#ed8e8f") {
 var id = img.alt; 
 var url="highlights_red_";
 var highlights_red = document.getElementById(url+id);
 highlights_red.style.display = "block";
 
-
-document.getElementById("true").addEventListener("touchstart", function(event) {
+img.addEventListener("click", function(event) {
 //event.stopImmediatePropagation();
-alert("Rojo");
-event.stopImmediatePropagation();
-
-
-});
-
-
-
-document.getElementById("true").addEventListener("click", function( event ) {
-
-var x= event.type;
-console.log("rojo")
   window.open('http://www.google.com','_blank');
-
 event.stopImmediatePropagation();
-//event.stopPropagation();
+
 
 });
+
 
 
 
 }
+
 else
 {
 
-
-event="";
 var id = img.alt; 
 var url="highlights_red_";
 var highlights_red = document.getElementById(url+id);
@@ -483,49 +513,20 @@ highlights_red.style.display = "none";
 
 
 
-if (hex=="#6f9c9f") {
- 
+if (hex==="#6f9c9f") {
 var id = img.alt; 
 var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
 
 
-
-
-
-document.getElementById("true").addEventListener("touchstart", function(event) {
-//event.stopImmediatePropagation();
-alert("azul");
-event.stopImmediatePropagation();
-
-
-});
-
-
-
-document.getElementById("true").addEventListener("click", function(event) {
+img.addEventListener("click", function(event) {
 //event.stopImmediatePropagation();
   window.open('http://www.facebook.com','_blank');
 
 event.stopImmediatePropagation();
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 else {
@@ -534,26 +535,21 @@ var id = img.alt;
 var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "none";
-
-
-
-
 }
 
 
 
 
 
-               
-});
 
 
-
-
-
+event.stopImmediatePropagation();  
+return false;
 
 
 }
+
+
 
 
 
@@ -567,12 +563,12 @@ highlights_blue.style.display = "none";
         switch(e.keyCode){
             case 37: // left
                 $el.prevFrame();
-                $el.detectar_color();
+             $el.canvas();
                 break;
             case 39: // right
                 $el.nextFrame();
 
-                $el.detectar_color();
+                $el.canvas();
                 break;
         }
     };
@@ -582,7 +578,7 @@ highlights_blue.style.display = "none";
         $downElem.trigger('up');
 
      
-
+canvas();
 
 
 
