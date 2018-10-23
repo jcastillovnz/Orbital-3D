@@ -448,7 +448,11 @@ highlights_red.style.display = "block";
 document.getElementById("true").addEventListener("click", function( event ) {
 
 var x= event.type;
-alert("ES ROJO");
+console.log("rojo")
+
+
+  window.open('http://www.google.com','_blank');
+
 event.stopImmediatePropagation();
 //event.stopPropagation();
 
@@ -483,7 +487,7 @@ highlights_blue.style.display = "block";
 document.getElementById("true").addEventListener("click", function(event) {
 //event.stopImmediatePropagation();
 
-alert("ES AZUL");
+  window.open('http://www.facebook.com','_blank');
 
 event.stopImmediatePropagation();
 
