@@ -438,32 +438,31 @@ var hex =rgbToHex(r, g, b);
 
 
 if (hex=="#ed8e8f") {
-
-
 var id = img.alt; 
 var url="highlights_red_";
 var highlights_red = document.getElementById(url+id);
 highlights_red.style.display = "block";
 
 
-event.preventDefault();
+
 document.getElementById("true").addEventListener("click", function( event ) {
-event.stopImmediatePropagation();
+
 var x= event.type;
-alert("ES ROJO, AQUI SUCEDERA UNA ACCION PROGRAMABLE"+x);
+alert("ES ROJO");
+event.stopImmediatePropagation();
+//event.stopPropagation();
+
+
 
 
 });
 
 
 
-
-
-
-
 }
 else
 {
+
 var id = img.alt; 
 var url="highlights_red_";
 var highlights_red = document.getElementById(url+id);
@@ -481,12 +480,12 @@ var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
 
-event.preventDefault();
 document.getElementById("true").addEventListener("click", function(event) {
-event.stopImmediatePropagation();
+//event.stopImmediatePropagation();
 
-var x= event.type;
-alert(hex+x);
+alert("ES AZUL");
+
+event.stopImmediatePropagation();
 
 
 
