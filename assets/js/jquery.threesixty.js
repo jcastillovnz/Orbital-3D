@@ -7,9 +7,6 @@
  */
 
 $(document).ready(function(){
-
-
-
 (function ( $, window, document, undefined ) {
 
 
@@ -281,10 +278,6 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
         lastY = $downElem.data('lastY') || 0;
         isMouseDown = true;
         $downElem.trigger('down');
-       
-
-
-
     };
 
     ThreeSixty.prototype.onTouchMove = function(e) {
@@ -305,6 +298,7 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
                 val = 0;
 
             $downElem.trigger('move');
+
 
             if(options.dragDirection === 'vertical'){
                 if(y > lastY){
@@ -332,6 +326,9 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
             else if(val <= -thisTotal) val = val % (thisTotal - 1);
             if(val > 0) val = thisTotal - val;
             val = Math.abs(val);
+
+
+
             $downElem.find('.threesixty-frame').css({display: 'none'});
             $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -348,7 +345,7 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
             $downElem.find('.highlights_red').css({display: 'none'});
 
 
-canvas();
+    canvas();
 
 
 
@@ -415,11 +412,7 @@ function rgbToHex(r, g, b) {
 
 var hex =rgbToHex(r, g, b);
 
-
-
-
 if (hex==="#ed8e8f") {
-
 var id = img.alt; 
 var url="highlights_red_";
 var highlights_red = document.getElementById(url+id);
@@ -427,7 +420,11 @@ highlights_red.style.display = "block";
 
 $(document).click(function(e){
      e.preventDefault();
-    alert("ROJO");
+    //alert("ROJO");
+
+   $('#Modal_rojo').modal();
+
+
     // si lo deseamos podemos eliminar el evento click
     // una vez utilizado por primera vez
     $(document).unbind("click");
@@ -458,7 +455,7 @@ var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
 $(document).click(function(e){
      e.preventDefault();
-    alert("AZUL");
+ $('#Modal_azul').modal();
  
     // si lo deseamos podemos eliminar el evento click
     // una vez utilizado por primera vez
