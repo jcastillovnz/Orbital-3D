@@ -119,7 +119,7 @@ var scope,
 ////////////////////////////////////////////////////////////////////////////////////////////
             $this.find('.highlights_red').css({display: 'none'});
       
-canvas();
+                    canvas();
 
 
 
@@ -127,8 +127,6 @@ canvas();
 
         });
     };
-
-
 
     // PRIVATE METHODS -------------------------------------------------
 
@@ -168,76 +166,47 @@ canvas();
             for(j; j < data[i].count; j++){
                 url = data[i].path.replace('{index}', j);
                 $('<img/>').data('index', i).attr('src', url).load(this.onLoadComplete);
-             
-
-
             }
         }
     };
 
-    ThreeSixty.prototype.onLoadComplete = function(e) {
-        var index = $(e.currentTarget).data('index'),
-            thisObj = data[index];
-        thisObj.loaded++;
-        if(thisObj.loaded === thisObj.count){
-            scope.onLoadAllComplete(index);
-        }
-    };
+ThreeSixty.prototype.onLoadComplete = function(e) {
+var index = $(e.currentTarget).data('index'),
+thisObj = data[index];
+thisObj.loaded++;
+if(thisObj.loaded === thisObj.count){
+scope.onLoadAllComplete(index);
+}
+};
 
-    ThreeSixty.prototype.onLoadAllComplete = function(objIndex) {
-        var $this = data[objIndex].$el,
-            html = '',
-            l = data[objIndex].count,
-            pathTemplate = data[objIndex].path,
-            i = 0;
-
-        // remove preloader
-        $this.html('');
-        $this.removeClass('preloading');
-
-        // add 360 images
-        for(i; i < l; i++){
+ThreeSixty.prototype.onLoadAllComplete = function(objIndex) {
+var $this = data[objIndex].$el,
+html = '',
+l = data[objIndex].count,
+pathTemplate = data[objIndex].path,
+i = 0;
+// remove preloader
+$this.html('');
+$this.removeClass('preloading');
+// add 360 images
+for(i; i < l; i++){
 var display = (i === 0) ? 'block' : 'none';
 var none = 'none'
-
-
 path_mascaras="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/assets/img/masks/"
-
 path_highlights_blue="assets/img/highlights/blue/"
 path_highlights_red="assets/img/highlights/red/"
 extencion=".png"
-
-
-
 html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 if (i==0) {
 html += '<img class="mascaras" alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
 }
-
 else
 {
 html += '<img class="mascaras" alt="'+i+'"   crossOrigin = "Anonymous"  style="display:' + display + ';" id="false"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
-
-
 }
-
 html += '<img class="highlights_blue"     style="display:' + none + ';" data-index="' + i + '"  id="highlights_blue_' + i + '" src="' + path_highlights_blue+''+i+extencion+'"/>';
-
 html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_red_' + i + '" src="' + path_highlights_red+''+i+extencion+'"/>';
-
-
-
-
-
-
-
-
-
 
         }
         $this.html(html);
@@ -281,10 +250,8 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
             lastX = $downElem.data('lastX') || 0;
             lastY = $downElem.data('lastY') || 0;
             isMouseDown = true;
-         
-
             $downElem.trigger('down');
-  canvas();
+
 
 
 
@@ -294,7 +261,6 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
         if(options.useKeys === true){
             $(document).bind('keydown', that.onKeyDown);
         }
-
         // mouse up
         $(document, 'html', 'body').mouseup(that.onMouseUp);
         $(document).blur(that.onMouseUp);
@@ -305,7 +271,7 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
 
     ThreeSixty.prototype.onTouchStart = function(e) {
         var touch = e.touches[0];
-        e.preventDefault();
+        //e.preventDefault();
         $downElem = $(e.target).parent();
         thisTotal = $downElem.data('count');
         startX = touch.pageX;
@@ -315,9 +281,10 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
         lastY = $downElem.data('lastY') || 0;
         isMouseDown = true;
         $downElem.trigger('down');
+       
 
 
-        canvas();
+
     };
 
     ThreeSixty.prototype.onTouchMove = function(e) {
@@ -325,7 +292,6 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
         var touch = e.touches[0];
         scope.onMove(touch.pageX, touch.pageY);
 
-        canvas();
     };
 
     ThreeSixty.prototype.onTouchEnd = function(e) {
@@ -359,20 +325,15 @@ html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="
             lastVal = val;
             lastY = y;
             lastX = x;
-
             $downElem.data('lastY', lastY);
             $downElem.data('lastX', lastX);
             $downElem.data('lastVal', lastVal);
-
             if(val >= thisTotal) val = val % (thisTotal - 1);
             else if(val <= -thisTotal) val = val % (thisTotal - 1);
             if(val > 0) val = thisTotal - val;
-
             val = Math.abs(val);
-
             $downElem.find('.threesixty-frame').css({display: 'none'});
             $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-
 /////////////////////////////////////////////////////////////////////////////////////////
             $downElem.find('.mascaras').css({display: 'none'});
 ///////////////////////////////desactivar mascara/////////////////////////////////////////////////////
@@ -396,29 +357,15 @@ canvas();
 
 
 
-
-
-
 window.onload = function(e) {
-
-
 canvas();
-
-
   }
 
 
-function canvas(highlights_red) {
+function canvas() {
 
 var img= document.getElementById('true');
-
-
-
-
-
 img.addEventListener('mousemove', function (e) {
-
-
   let ctx;
   if(!this.canvas) {
       this.canvas = document.createElement('canvas');
@@ -430,8 +377,6 @@ img.addEventListener('mousemove', function (e) {
     ctx=this.canvas.getContext('2d');
   }
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
-
-
 
 detectar_color(ctx,e,img);
 
@@ -511,8 +456,6 @@ var id = img.alt;
 var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "block";
-
-
 $(document).click(function(e){
      e.preventDefault();
     alert("AZUL");
@@ -524,9 +467,6 @@ $(document).click(function(e){
 })
 
 
-
-
-
 }
 else {
 
@@ -536,31 +476,8 @@ var url="highlights_blue_";
 var highlights_blue = document.getElementById(url+id);
 highlights_blue.style.display = "none";
 
-
-
 }
-
-
 }
-
-
-
-function deteccion_click(img) {
-
-img.addEventListener("click", function_name());
-
-function function_name(e) {
-    e.preventDefault()
-alert("hola");
-e.stopImmediatePropagation();
-
-
-}
-
-
-}
-
-
 
 
 
@@ -574,12 +491,11 @@ e.stopImmediatePropagation();
     ThreeSixty.prototype.onKeyDown = function(e) {
         switch(e.keyCode){
             case 37: // left
-                $el.prevFrame();
+             $el.prevFrame();
              $el.canvas();
                 break;
             case 39: // right
                 $el.nextFrame();
-
                 $el.canvas();
                 break;
         }
@@ -588,9 +504,9 @@ e.stopImmediatePropagation();
     ThreeSixty.prototype.onMouseUp = function(e) {
         isMouseDown = false;
         $downElem.trigger('up');
+         
 
      
-canvas();
 
 
 
