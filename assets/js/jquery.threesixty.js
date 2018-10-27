@@ -195,13 +195,9 @@ path_highlights_red="assets/img/highlights/red/"
 extencion=".png"
 html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if (i==0) {
-html += '<img class="mascaras" alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
-}
-else
-{
-html += '<img class="mascaras" alt="'+i+'"   crossOrigin = "Anonymous"  style="display:' + display + ';" id="false"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
-}
+
+html += '<img class="mascaras " alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
+
 html += '<img class="highlights_blue"     style="display:' + none + ';" data-index="' + i + '"  id="highlights_blue_' + i + '" src="' + path_highlights_blue+''+i+extencion+'"/>';
 html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_red_' + i + '" src="' + path_highlights_red+''+i+extencion+'"/>';
 
@@ -489,11 +485,11 @@ highlights_blue.style.display = "none";
         switch(e.keyCode){
             case 37: // left
              $el.prevFrame();
-             $el.canvas();
+             //$el.canvas();
                 break;
             case 39: // right
                 $el.nextFrame();
-                $el.canvas();
+               // $el.canvas();
                 break;
         }
     };
