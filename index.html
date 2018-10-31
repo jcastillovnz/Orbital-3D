@@ -1,186 +1,116 @@
-<html>
-    <head>
-        <title>ORBITAL 3D</title>
-  <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/estilos.css">
+  <head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<title>Orbital 360</title>
 
 
 
-<style type="text/css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-center fixed-top" id="mainNav">
+      <div class="container">
 
 
+        <a style="padding-left: 37%" class="navbar-brand js-scroll-trigger" href="#page-top">
+          <img src="img/logo.png">
 
-</style>
-
+        </a>
  
-    </head>
-    <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div  class="threesixty-wrapper">
-
-<div   class="threesixty" id="{index}" data-path="assets/img/r5/{index}.png" data-count="31">
-
-
-
-<div id="loader"></div>
-
-
-
-</div>
-
-</div>
-
-
-<br>
-<div  class="btn-group btn-group-justified  "   >
-
-<button class="btn btn-warning prev btn-xs">
-<strong>
-<i class="fas fa-chevron-circle-left "></i>
-</strong>
-</button>
-<button class="btn btn-warning next btn-xs ">
-<strong>
-<i class="fas fa-chevron-circle-right  "></i>
-</strong>
-</button>
-
-</div>
-
-
-
-
- <!-- Modal -->
-  <div class="modal fade" id="Modal_rojo" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-
-        <!--  
-        <div class="modal-header hidden">
-        </div>
--->
-
-        <div class="modal-body">
-
-  <center>  <h1> T 1 </h1>   </center>   
-
-  <p class="text-center">48.07 m<sup>2</sup> </p>
-<div class="btn-group-vertical btn-block">
-<button class="btn btn-danger btn-sm" >PDF</button>
-<button class="btn btn-danger btn-sm" >PLANO</button>
-
-</div>
 
         </div>
-
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-<!-- 
-        <div class="modal-footer hidden">
-        </div>
- -->
-
-
       </div>
-    </div>
-  </div>
-<!-- Modal -->
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+
+    </header>
 
 
 
-     <div class="modal-dialog vertical-align-center">
+<div id="panel-navegacion" class="col-sm-4">
 
- <!-- Modal -->
-  <div class="modal fade" id="Modal_azul" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-
-
+<div class="btn-group-vertical">
+<h4 style="color: white;"><strong>  Cocoon </strong><span class="badge badge-dark">Vistas</span></h4>
+<button onclick="aerea()"   class="btn btn-primary btn-block"><strong>  Aerea</strong></button>
+<button onclick="peatonal()"   class="btn btn-primary btn-block"><strong> Peatonal </strong></button>
 
 
-        <!--  
-        <div class="modal-header hidden">
-        </div>
--->
 
-        <div class="modal-body">
+<button onclick="opcion7()"   class="btn btn-primary btn-block"><strong>  6 <sup>ta</sup>   etapa</strong></button>
+<button onclick="opcion6()"   class="btn btn-primary btn-block"><strong>5 <sup>ta</sup>  etapa </strong></button>
+<button onclick="opcion5()"   class="btn btn-primary btn-block"><strong>4 <sup>ta</sup>  etapa</strong></button>
+<button onclick="opcion4()"  class="btn btn-primary btn-block"><strong>3 <sup>ta</sup>  etapa </strong></button>
+<button onclick="opcion3()"    class="btn btn-primary btn-block"><strong>2 <sup>ta</sup>  etapa  </strong> </button>
+<button onclick="opcion2()"  class="btn btn-primary btn-block"><strong>1 <sup>ta</sup>   etapa</strong></button>
+<button onclick="opcion1()"     class="btn btn-primary btn-block"><strong>RDC </strong></button>
 
-      <center>  <h2> T 2</h2>   </center>   
-
-<p class="text-center">41.03 m<sup>2</sup> </p>
-
-<div class="btn-group-vertical btn-block">
-
-<button class="btn btn-primary btn-sm" >PDF</button>
-<button class="btn btn-primary btn-sm" >PLANO</button>
 
 </div>
 
 
-        </div>
 
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-<!-- 
-        <div class="modal-footer hidden">
-        </div>
- -->
+</div>
 
 
+<!--  CARGA DE IFRAME -->
+
+<div class="container d-flex h-100 align-items-center">
+<div class="mx-auto text-center">
+   
+<div id="content">
+<iframe    id="iframe" src="iframes/roof/index.html" name="iframe_a"></iframe>
+</div>
+
+
+</div>
+</div>
+<!--  CARGA DE IFRAME -->
 
 
 
 
-
-
-
+    <!-- Footer -->
+    <footer class="bg-black small text-center text-white-50">
+      <div class="container">
+        Copyright &copy; JCASTILLO 2018
       </div>
-    </div>
-  </div>
-    </div>
-<!-- Modal -->
+    </footer>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.min.js"></script>
 
+  </body>
 
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="assets/js/jquery.threesixty.js"></script>
-<script src="assets/js/script.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-
-
-
-    </body>
 </html>
