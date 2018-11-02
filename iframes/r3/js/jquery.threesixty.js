@@ -186,8 +186,6 @@ path_masks="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/ifr
 
 
 
-
-
 var none = 'none';
 extencion=".png"
 html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="'+pathTemplate.replace( '{index}', indice)+ '"/>';
