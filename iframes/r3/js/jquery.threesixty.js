@@ -71,6 +71,12 @@ var scope,
             $this.find('.threesixty-frame').css({display: 'none'});
             $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
 ////////////////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.masks').css({display: 'none'});
+            $this.find('.masks:eq(' + val + ')').css({display: 'block'});
+     
+
+
 
 
               canvas();
@@ -99,7 +105,11 @@ var scope,
 
             $this.find('.threesixty-frame').css({display: 'none'});
             $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
+     ///////////////////////////////////////////////////////////////////////////////////////
+            $this.find('.masks').css({display: 'none'});
+            $this.find('.masks:eq(' + val + ')').css({display: 'block'});
      
+
 
 
 
@@ -317,6 +327,9 @@ html += '<img class="masks" alt="'+i+'" crossOrigin = "Anonymous"  style="displa
 
             $downElem.find('.threesixty-frame').css({display: 'none'});
             $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
+/////////////////////////////////////////////////////////////////////////////////////////
+            $downElem.find('.masks').css({display: 'none'});
+            $downElem.find('.masks:eq(' + val + ')').css({display: 'block'});
 /////////////////////////////////////////////////////////////////////////////////////////
 
 

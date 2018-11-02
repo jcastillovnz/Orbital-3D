@@ -185,6 +185,14 @@ var indice =prefijo;
 var none = 'none';
 extencion=".png"
 html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="'+pathTemplate.replace( '{index}', indice)+ '"/>';
+/////////////////////////////////////////////////////////////////////////////////////////masks///////////////////////////////////////////////////////////////////////////////////////
+html += '<img class="masks" alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_masks+''+i+extencion+'"/>';
+
+
+
+
+
+
 
 }
         $this.html(html);
