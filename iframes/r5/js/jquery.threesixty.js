@@ -192,14 +192,14 @@ var none = 'none'
 
 
 
-path_mascaras="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/iframes/r5/assets/img/r5/masks/"
+path_masks="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/iframes/r5/img/r5/masks/"
 path_highlights_blue="img/r5/highlights/A501/"
 path_highlights_red="img/r5/highlights/A502/"
 extencion=".png"
 html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-html += '<img class="mascaras " alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_mascaras+''+i+extencion+'"/>';
+html += '<img class="mascaras " alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_masks+''+i+extencion+'"/>';
 html += '<img class="highlights_blue"     style="display:' + none + ';" data-index="' + i + '"  id="highlights_blue_' + i + '" src="' + path_highlights_blue+''+i+extencion+'"/>';
 html += '<img class="highlights_red"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_red_' + i + '" src="' + path_highlights_red+''+i+extencion+'"/>';
 

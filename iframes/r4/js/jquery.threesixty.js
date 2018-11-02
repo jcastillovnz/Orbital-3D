@@ -186,7 +186,7 @@ $this.removeClass('preloading');
 for(i; i < l; i++){
 var display = (i === 0) ? 'block' : 'none';
 var none = 'none'
-path_masks="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/iframes/r4/assets/img/r4/masks/"
+path_masks="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/iframes/r4/img/r4/masks/"
 path_highlights_A401="img/r4/highlights/A401/"
 path_highlights_A402="img/r4/highlights/A402/"
 path_highlights_A403="img/r4/highlights/A403/"
