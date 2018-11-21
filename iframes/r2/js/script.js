@@ -17,13 +17,42 @@ draggable: true,
 });
 
 
+var interval;
+
 
 $('.play').click(function(){
-setInterval(play, 200);
-function play() {
-$threeSixty.nextFrame()
+
+var mode =this.value;
+
+
+if (mode=="play") {
+document.getElementById("play-icon").className = "fas fa-pause-circle";	
+interval = setInterval(play, 200);
+this.value="stop";
+
 }
+
+if (mode=="stop") {
+
+document.getElementById("play-icon").className = "fas fa-play-circle";
+clearInterval(interval);
+this.value="play";
+
+}
+
+
+
+
+function play() {
+$threeSixty.nextFrame();
+}
+
+
+
+
 });
+
+
 
 
 

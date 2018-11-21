@@ -26,7 +26,7 @@ var mode =this.value;
 
 
 if (mode=="play") {
-document.getElementById("play-icon").className = "fas fa-stop-circle";	
+document.getElementById("play-icon").className = "fas fa-pause-circle";	
 interval = setInterval(play, 200);
 this.value="stop";
 
