@@ -7,6 +7,9 @@
  */
 
 $(document).ready(function(){
+
+
+
 (function ( $, window, document, undefined ) {
 
 
@@ -68,18 +71,24 @@ var scope,
 
             val = Math.abs(val);
 
-            $this.find('.threesixty-frame').css({display: 'none'});
-            $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-////////////////////////////////////////////////////////////////////////////////////////////
-
-
-              canvas();
+            $this.find('.threesixty-frame').css({visibility: 'hidden'});
+            $this.find('.threesixty-frame:eq(' + val + ')').css({visibility: 'visible'});
+          
 
 
 
 
         });
     };
+
+
+
+
+
+
+
+
+
 
     $.fn.prevFrame = ThreeSixty.prototype.prevFrame = function(){
         $(this).each(function(i){
@@ -97,12 +106,10 @@ var scope,
 
             val = Math.abs(val);
 
-            $this.find('.threesixty-frame').css({display: 'none'});
-            $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-     
-
-
-
+            $this.find('.threesixty-frame').css({visibility: 'hidden'});
+            $this.find('.threesixty-frame:eq(' + val + ')').css({visibility: 'visible'});
+         
+    
 
         });
     };
@@ -175,16 +182,26 @@ $this.html('');
 $this.removeClass('preloading');
 // add 360 images
 for(i; i < l; i++){
-var display = (i === 0) ? 'block' : 'none';
+var display = (i === 0) ? 'visible' : 'hidden';
 
 var  prefijo = ''+i;////PREFIJO DE FRAME
 var indice =prefijo;
 
 
 
-var none = 'none';
+var none = 'hidden';
 extencion=".png"
-html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="'+pathTemplate.replace( '{index}', indice)+ '"/>';
+
+
+if (i===0) {
+html += '<img class="threesixty-frame renders"  name="active" style="visibility:' +display+ ';" data-index="' + i + '"  id="' + i + '" src="'+pathTemplate.replace( '{index}', indice)+ '"/>';
+}
+else{
+
+    html += '<img class="threesixty-frame renders" name="false"  style="visibility:' +display+ ';" data-index="' + i + '"  id="' + i + '" src="'+pathTemplate.replace( '{index}', indice)+ '"/>';
+}
+
+
 
 }
         $this.html(html);
@@ -308,12 +325,8 @@ html += '<img class="threesixty-frame" style="display:' +display + ';" data-inde
             if(val > 0) val = thisTotal - val;
             val = Math.abs(val);
 
-
-
-            $downElem.find('.threesixty-frame').css({display: 'none'});
-            $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-/////////////////////////////////////////////////////////////////////////////////////////
-
+            $downElem.find('.threesixty-frame').css({visibility: 'hidden'});
+            $downElem.find('.threesixty-frame:eq(' + val + ')').css({visibility: 'visible'});
 
 
 
@@ -325,6 +338,9 @@ html += '<img class="threesixty-frame" style="display:' +display + ';" data-inde
 
 window.onload = function(e) {
 
+
+
+
   }
 
 
@@ -333,15 +349,15 @@ function canvas() {
 var img= document.getElementById('true');
 img.addEventListener('mousemove', function (e) {
   let ctx;
-  if(!this.canvas) {
+ 
       this.canvas = document.createElement('canvas');
       this.canvas.width = this.width;
       this.canvas.height = this.height;
       ctx=this.canvas.getContext('2d');
       ctx.drawImage(this, 0, 0, this.width, this.height);
-  } else {
+
     ctx=this.canvas.getContext('2d');
-  }
+ 
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 
 detectar_color(ctx,e,img);
@@ -358,8 +374,8 @@ detectar_color(ctx,e,img);
 
 
 
-
 function detectar_color(ctx,e,img) {
+    $(document).unbind("click");
 ////DETECTAR COLORES
 //Covierto Color RGBA a Hexadecimal
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
@@ -381,33 +397,7 @@ function rgbToHex(r, g, b) {
 
 var hex =rgbToHex(r, g, b);
 
-if (hex==="#6f9c9f") {
 
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
-$(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
-    e.stopImmediatePropagation()
-})
-
-
-}
-else {
-
-var x = null;
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
-
-}
 }
 
 
@@ -434,7 +424,7 @@ highlights_blue.style.display = "none";
 
     ThreeSixty.prototype.onMouseUp = function(e) {
         isMouseDown = false;
-        $downElem.trigger('up');
+      //
          
 
      

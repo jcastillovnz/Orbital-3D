@@ -68,19 +68,13 @@ var scope,
 
             val = Math.abs(val);
 
-            $this.find('.threesixty-frame').css({display: 'none'});
-            $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-////////////////////////////////////////////////////////////////////////////////////////////
-     ///////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.masks').css({display: 'none'});
-            $this.find('.masks:eq(' + val + ')').css({display: 'block'});
-     
-
-
-
-
-              canvas();
-
+        
+            $this.find('.threesixty-frame').css({visibility: 'hidden'});
+            $this.find('.threesixty-frame:eq(' + val + ')').css({ visibility: 'visible'}).css({display: 'block'});
+            $this.find('.masks').css({visibility: 'hidden'}).attr("id","false");
+            $this.find('.masks:eq(' + val + ')').css({display: 'block'}).css({ visibility: 'visible'}).attr("id","true");
+            $this.find('.highlights').css({display: 'none'}).css({visibility: 'hidden'});
+            canvas();
 
 
 
@@ -102,14 +96,13 @@ var scope,
             if(val > 0) val = thisTotal - val;
 
             val = Math.abs(val);
-
-            $this.find('.threesixty-frame').css({display: 'none'});
-            $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-     ///////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.masks').css({display: 'none'});
-            $this.find('.masks:eq(' + val + ')').css({display: 'block'});
-     
-
+          
+            $this.find('.threesixty-frame').css({visibility: 'hidden'});
+            $this.find('.threesixty-frame:eq(' + val + ')').css({ visibility: 'visible'}).css({display: 'block'});
+            $this.find('.masks').css({visibility: 'hidden'}).attr("id","false");
+            $this.find('.masks:eq(' + val + ')').css({display: 'block'}).css({ visibility: 'visible'}).attr("id","true");
+            $this.find('.highlights').css({display: 'none'}).css({visibility: 'hidden'});
+            canvas();
 
 
 
@@ -169,39 +162,37 @@ scope.onLoadAllComplete(index);
 };
 
 ThreeSixty.prototype.onLoadAllComplete = function(objIndex) {
-
-
-
 var $this = data[objIndex].$el,
 html = '',
 l = data[objIndex].count,
 pathTemplate = data[objIndex].path,
 i = 0;
-
-
-
 // remove preloader
 $this.html('');
 $this.removeClass('preloading');
 // add 360 images
 for(i; i < l; i++){
-var display = (i === 0) ? 'block' : 'none';
-
-var  prefijo = ''+i;////PREFIJO DE FRAME
-var indice =prefijo;
-
+var display = (i === 0) ? 'visible' : 'hidden';
+var none = 'hidden'
 path_masks="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/iframes/r3/img/r3/masks/"
-//path_highlights_A401="img/r4/highlights/A401/"
+path_highlights_A302="img/r3/highlights/A302/"
+path_highlights_A301="img/r3/highlights/A301/"
+path_highlights_A303="img/r3/highlights/A303/"
+path_highlights_B301="img/r3/highlights/B301/"
+path_highlights_B302="img/r3/highlights/B302/"
 
-
-var none = 'none';
 extencion=".png"
-html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="'+pathTemplate.replace( '{index}', indice)+ '"/>';
-/////////////////////////////////////////////////////////////////////////////////////////masks///////////////////////////////////////////////////////////////////////////////////////
-html += '<img class="masks" alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_masks+''+i+extencion+'"/>';
+html += '<img class="threesixty-frame renders" style="visibility:' +display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+html += '<img class="masks center" alt="'+i+'" crossOrigin = "Anonymous"  style="visibility:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_masks+''+i+extencion+'"/>';
+html += '<img class="highlights center"     style="visibility:' + none + ';" data-index="' + i + '"  id="highlights_A301_' + i + '" src="' + path_highlights_A301+''+i+extencion+'"/>';
+html += '<img class="highlights center"     style="visibility:' + none + ';" data-index="' + i + '"  id="highlights_A302_' + i + '" src="' + path_highlights_A302+''+i+extencion+'"/>';
+html += '<img class="highlights center"     style="visibility:' + none + ';" data-index="' + i + '"  id="highlights_A303_' + i + '" src="' + path_highlights_A303+''+i+extencion+'"/>';
+html += '<img class="highlights center"     style="visibility:' + none + ';" data-index="' + i + '"  id="highlights_B301_' + i + '" src="' + path_highlights_B301+''+i+extencion+'"/>';
+html += '<img class="highlights center"     style="visibility:' + none + ';" data-index="' + i + '"  id="highlights_B302_' + i + '" src="' + path_highlights_B302+''+i+extencion+'"/>';
 
 
-}
+        }
         $this.html(html);
 
         this.attachHandlers(objIndex);
@@ -325,14 +316,12 @@ html += '<img class="masks" alt="'+i+'" crossOrigin = "Anonymous"  style="displa
 
 
 
-            $downElem.find('.threesixty-frame').css({display: 'none'});
-            $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-/////////////////////////////////////////////////////////////////////////////////////////
-            $downElem.find('.masks').css({display: 'none'});
-            $downElem.find('.masks:eq(' + val + ')').css({display: 'block'});
-/////////////////////////////////////////////////////////////////////////////////////////
-
-
+            $downElem.find('.threesixty-frame').css({visibility: 'hidden'});
+            $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'}).css({visibility: 'visible'});
+            $downElem.find('.masks').css({visibility: 'hidden'}).attr("id","false")  ;
+            $downElem.find('.masks:eq(' + val + ')').css({display: 'block'}).css({visibility: 'visible'}).attr("id","true");
+            $downElem.find('.highlights').css({display: 'none'}).css({visibility: 'hidden'});
+            canvas();
 
 
 
@@ -342,7 +331,7 @@ html += '<img class="masks" alt="'+i+'" crossOrigin = "Anonymous"  style="displa
 
 
 window.onload = function(e) {
-
+canvas();
   }
 
 
@@ -351,15 +340,15 @@ function canvas() {
 var img= document.getElementById('true');
 img.addEventListener('mousemove', function (e) {
   let ctx;
-  if(!this.canvas) {
+  
       this.canvas = document.createElement('canvas');
       this.canvas.width = this.width;
       this.canvas.height = this.height;
       ctx=this.canvas.getContext('2d');
       ctx.drawImage(this, 0, 0, this.width, this.height);
-  } else {
+
     ctx=this.canvas.getContext('2d');
-  }
+
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 
 detectar_color(ctx,e,img);
@@ -378,6 +367,7 @@ detectar_color(ctx,e,img);
 
 
 function detectar_color(ctx,e,img) {
+$(document).unbind("click");
 ////DETECTAR COLORES
 //Covierto Color RGBA a Hexadecimal
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
@@ -391,6 +381,10 @@ function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
+
+
+
+
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
@@ -399,33 +393,236 @@ function rgbToHex(r, g, b) {
 
 var hex =rgbToHex(r, g, b);
 
-if (hex==="#6f9c9f") {
 
+if (hex==="#798490") {
+$(document).unbind("click");
+///A-302
 var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
+var url="highlights_A302_";
+var highlights_A302 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'A-302'); 
+
+highlights_A302.style.display = "block";
+highlights_A302.style.visibility = "visible";
+
+
+
 $(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r3/plans/A302/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
     e.stopImmediatePropagation()
 })
 
 
 }
-else {
-
-var x = null;
+else
+{
 var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
+var url="highlights_A302_";
+var highlights_A302 = document.getElementById(url+id);
+highlights_A302.style.display = "none";
+highlights_A302.style.visibility = "hidden";
+
 
 }
+
+
+
+
+
+
+
+if (hex==="#788490") {
+$(document).unbind("click");
+///A-303
+var id = img.alt; 
+var url="highlights_A303_";
+var highlights_A303 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'A-303'); 
+
+highlights_A303.style.display = "block";
+highlights_A303.style.visibility = "visible";
+
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r3/plans/A303/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
+    e.stopImmediatePropagation()
+})
+
+
+}
+else
+{
+var id = img.alt; 
+var url="highlights_A303_";
+var highlights_A303 = document.getElementById(url+id);
+highlights_A303.style.display = "none";
+highlights_A303.style.visibility = "hidden";
+
+
+}
+
+
+
+
+
+
+if (hex==="#ed8e8f") {
+$(document).unbind("click");
+///A-301
+var id = img.alt; 
+var url="highlights_A301_";
+var highlights_A301 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'A-301'); 
+
+highlights_A301.style.display = "block";
+highlights_A301.style.visibility = "visible";
+
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r3/plans/A301/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
+    e.stopImmediatePropagation()
+})
+
+
+
+}
+else
+{
+var id = img.alt; 
+var url="highlights_A301_";
+var highlights_A301 = document.getElementById(url+id);
+highlights_A301.style.display = "none";
+highlights_A301.style.visibility= "hidden";
+
+}
+
+
+
+
+if (hex==="#ee8e8f") {
+$(document).unbind("click");
+///B-301
+var id = img.alt; 
+var url="highlights_B301_";
+var highlights_B301 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'B-301'); 
+console.log(highlights_B301);
+highlights_B301.style.display = "block";
+highlights_B301.style.visibility = "visible";
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r3/plans/B301/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
+    e.stopImmediatePropagation()
+})
+
+
+}
+else
+{
+var id = img.alt; 
+var url="highlights_B301_";
+var highlights_B301 = document.getElementById(url+id);
+highlights_B301.style.display = "none";
+highlights_B301.style.visibility = "hidden";
+
+}
+
+
+
+
+
+
+if (hex==="#ec8e8f") {
+$(document).unbind("click");
+///B-302
+var id = img.alt; 
+var url="highlights_B302_";
+var highlights_B302= document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'B-302'); 
+console.log(highlights_B302);
+highlights_B302.style.display = "block";
+highlights_B302.style.visibility = "visible";
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r3/plans/B302/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
+    e.stopImmediatePropagation()
+})
+
+}
+else
+{
+var id = img.alt; 
+var url="highlights_B302_";
+var highlights_B302 = document.getElementById(url+id);
+highlights_B302.style.display = "none";
+highlights_B302.style.visibility = "hidden";
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -452,9 +649,7 @@ highlights_blue.style.display = "none";
 
     ThreeSixty.prototype.onMouseUp = function(e) {
         isMouseDown = false;
-        $downElem.trigger('up');
-         
-
+  
      
 
 
@@ -505,4 +700,3 @@ highlights_blue.style.display = "none";
 
 
   });
-

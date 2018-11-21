@@ -52,6 +52,10 @@ var scope,
         $el.html('');
     };
 
+
+
+
+
     $.fn.nextFrame = ThreeSixty.prototype.nextFrame = function(){
         $(this).each(function(i){
             var $this = $(this),
@@ -67,21 +71,12 @@ var scope,
             if(val > 0) val = thisTotal - val;
 
             val = Math.abs(val);
-
-            $this.find('.threesixty-frame').css({display: 'none'});
-            $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.masks').css({display: 'none'});
-            $this.find('.masks:eq(' + val + ')').css({display: 'block'});
-
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.highlights_blue').css({display: 'none'});
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.highlights_red').css({display: 'none'});
-     
-
-              canvas();
-
+            $this.find('.threesixty-frame').css({visibility: 'hidden'});
+            $this.find('.threesixty-frame:eq(' + val + ')').css({ visibility: 'visible'}).css({display: 'block'});
+            $this.find('.masks').css({visibility: 'hidden'}).attr("id","false");
+            $this.find('.masks:eq(' + val + ')').css({display: 'block'}).css({ visibility: 'visible'}).attr("id","true");
+            $this.find('.highlights').css({display: 'none'}).css({visibility: 'hidden'});
+            canvas();
 
 
 
@@ -103,19 +98,12 @@ var scope,
             if(val > 0) val = thisTotal - val;
 
             val = Math.abs(val);
-            $this.find('.threesixty-frame').css({display: 'none'});
-            $this.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.masks').css({display: 'none'});
-            $this.find('.masks:eq(' + val + ')').css({display: 'block'});
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.highlights_blue').css({display: 'none'});
-////////////////////////////////////////////////////////////////////////////////////////////
-            $this.find('.highlights_red').css({display: 'none'});
-      
-                    canvas();
-
-
+           $this.find('.threesixty-frame').css({visibility: 'hidden'});
+            $this.find('.threesixty-frame:eq(' + val + ')').css({ visibility: 'visible'}).css({display: 'block'});
+            $this.find('.masks').css({visibility: 'hidden'}).attr("id","false");
+            $this.find('.masks:eq(' + val + ')').css({display: 'block'}).css({ visibility: 'visible'}).attr("id","true");
+            $this.find('.highlights').css({display: 'none'}).css({visibility: 'hidden'});
+            canvas();
 
 
 
@@ -184,8 +172,16 @@ $this.html('');
 $this.removeClass('preloading');
 // add 360 images
 for(i; i < l; i++){
-var display = (i === 0) ? 'block' : 'none';
-var none = 'none'
+var display = (i === 0) ? 'visible' : 'hidden';
+var none = 'hidden';
+
+
+
+
+
+
+
+
 path_masks="https://raw.githubusercontent.com/jcastillovnz/Orbital-3D/master/iframes/r4/img/r4/masks/"
 path_highlights_A401="img/r4/highlights/A401/"
 path_highlights_A402="img/r4/highlights/A402/"
@@ -194,20 +190,17 @@ path_highlights_B301="img/r4/highlights/B301/"
 path_highlights_B302="img/r4/highlights/B302/"
 
 
-
-
-
 extencion=".png"
-html += '<img class="threesixty-frame" style="display:' +display + ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
+
+
+html += '<img class="threesixty-frame renders" style="visibility:' +display+ ';" data-index="' + i + '"  id="' + i + '" src="' + pathTemplate.replace('{index}', i) + '"/>';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-html += '<img class="masks" alt="'+i+'" crossOrigin = "Anonymous"  style="display:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_masks+''+i+extencion+'"/>';
-html += '<img class="highlights_A401"     style="display:' + none + ';" data-index="' + i + '"  id="highlights_A401_' + i + '" src="' + path_highlights_A401+''+i+extencion+'"/>';
-html += '<img class="highlights_A402"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_A402_' + i + '" src="' + path_highlights_A402+''+i+extencion+'"/>';
-html += '<img class="highlights_A403"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_A403_' + i + '" src="' + path_highlights_A403+''+i+extencion+'"/>';
-html += '<img class="highlights_B301"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_B301_' + i + '" src="' + path_highlights_B301+''+i+extencion+'"/>';
-html += '<img class="highlights_B302"   style="display:' + none+ ';" data-index="' + i + '"  id="highlights_B302_' + i + '" src="' + path_highlights_B302+''+i+extencion+'"/>';
-
-
+html += '<img class="masks center" alt="'+i+'" crossOrigin = "Anonymous"  style="visibility:' + display + ';" id="true"     data-index="' + i + '"   src="' + path_masks+''+i+extencion+'"/>';
+html += '<img class="highlights center"     style="visibility:' + none + ';" data-index="' + i + '"  id="highlights_A401_' + i + '" src="' + path_highlights_A401+''+i+extencion+'"/>';
+html += '<img class="highlights center"   style="visibility:' + none+ ';" data-index="' + i + '"  id="highlights_A402_' + i + '" src="' + path_highlights_A402+''+i+extencion+'"/>';
+html += '<img class="highlights center"   style="visibility:' + none+ ';" data-index="' + i + '"  id="highlights_A403_' + i + '" src="' + path_highlights_A403+''+i+extencion+'"/>';
+html += '<img class="highlights center"   style="visibility:' + none+ ';" data-index="' + i + '"  id="highlights_B301_' + i + '" src="' + path_highlights_B301+''+i+extencion+'"/>';
+html += '<img class="highlights center"   style="visibility:' + none+ ';" data-index="' + i + '"  id="highlights_B302_' + i + '" src="' + path_highlights_B302+''+i+extencion+'"/>';
 
 
         }
@@ -333,24 +326,13 @@ html += '<img class="highlights_B302"   style="display:' + none+ ';" data-index=
             val = Math.abs(val);
 
 
+    $downElem.find('.threesixty-frame').css({visibility: 'hidden'});
+            $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'}).css({visibility: 'visible'});
+            $downElem.find('.masks').css({visibility: 'hidden'}).attr("id","false")  ;
+            $downElem.find('.masks:eq(' + val + ')').css({display: 'block'}).css({visibility: 'visible'}).attr("id","true");
+            $downElem.find('.highlights').css({display: 'none'}).css({visibility: 'hidden'});
+            canvas();
 
-            $downElem.find('.threesixty-frame').css({display: 'none'});
-            $downElem.find('.threesixty-frame:eq(' + val + ')').css({display: 'block'});
-/////////////////////////////////////////////////////////////////////////////////////////
-            $downElem.find('.mascaras').css({display: 'none'});
-///////////////////////////////desactivar mascara/////////////////////////////////////////////////////
-            $downElem.find('.masks').css({display: 'none'}).attr("id","false")  ;
-            $downElem.find('.masks:eq(' + val + ')').css({display: 'block'});
-///////////////////////////////activar mascara/////////////////////////////////////////////////////
-            $downElem.find('.masks:eq(' + val + ')').attr("id","true")
-///////////////////////////////////////////////////////////////////////////////////////////////
-            $downElem.find('.highlights_blue').css({display: 'none'});
-       
-///////////////////////////////////////////////////////////////////////////////////////////////
-            $downElem.find('.highlights_red').css({display: 'none'});
-
-
-    canvas();
 
 
 
@@ -369,15 +351,15 @@ function canvas() {
 var img= document.getElementById('true');
 img.addEventListener('mousemove', function (e) {
   let ctx;
-  if(!this.canvas) {
+
       this.canvas = document.createElement('canvas');
       this.canvas.width = this.width;
       this.canvas.height = this.height;
       ctx=this.canvas.getContext('2d');
       ctx.drawImage(this, 0, 0, this.width, this.height);
-  } else {
+
     ctx=this.canvas.getContext('2d');
-  }
+
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 
 detectar_color(ctx,e,img);
@@ -396,6 +378,7 @@ detectar_color(ctx,e,img);
 
 
 function detectar_color(ctx,e,img) {
+$(document).unbind("click");
 ////DETECTAR COLORES
 //Covierto Color RGBA a Hexadecimal
 const pixel = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
@@ -421,22 +404,37 @@ function rgbToHex(r, g, b) {
 
 var hex =rgbToHex(r, g, b);
 
-if (hex==="#ed8e8f") {
+
+
+
+
+
+
+
+
+if (hex==="#6f9c9f") {
+ $(document).unbind("click");
+   
+///A401
 var id = img.alt; 
-var url="highlights_red_";
-var highlights_red = document.getElementById(url+id);
-highlights_red.style.display = "block";
+var url="highlights_A401_";
+var highlights_A401 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'A-401'); 
+
+highlights_A401.style.display = "block";
+highlights_A401.style.visibility = "visible";
 
 $(document).click(function(e){
-     e.preventDefault();
-    //alert("ROJO");
-
-   $('#Modal_rojo').modal();
-
-
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r4/plans/A401/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
     e.stopImmediatePropagation()
 })
 
@@ -445,198 +443,193 @@ $(document).click(function(e){
 else
 {
 
-
 var id = img.alt; 
-var url="highlights_red_";
-var highlights_red = document.getElementById(url+id);
-highlights_red.style.display = "none";
+var url="highlights_A401_";
+var highlights_A401 = document.getElementById(url+id);
+highlights_A401.style.display = "none";
+highlights_A401.style.visibility = "hidden";
+}
 
+
+
+
+
+if (hex==="#788490") {
+$(document).unbind("click");    
+///A402
+var id = img.alt; 
+var url="highlights_A402_";
+var highlights_A402 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'A-402'); 
+
+
+highlights_A402.style.display = "block";
+highlights_A402.style.visibility = "visible";
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r4/plans/A402/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
 $(document).unbind("click");
+    e.stopImmediatePropagation()
+})
 
 
 
 }
-if (hex==="#6f9c9f") {
+else
+{
+var id = img.alt; 
+var url="highlights_A402_";
+var highlights_A402 = document.getElementById(url+id);
+highlights_A402.style.display = "none";
+highlights_A402.style.visibility = "hidden";
+
+}
+
+
+
+
+
+
+
+
+if (hex==="#798490") {
+$(document).unbind("click");
+///A403
+var id = img.alt; 
+var url="highlights_A403_";
+var highlights_A403 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'A-403'); 
+
+
+highlights_A403.style.display = "block";
+highlights_A403.style.visibility = "visible";
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r4/plans/A403/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
+    e.stopImmediatePropagation()
+})
+
+
+
+}
+else
+{
+var id = img.alt; 
+var url="highlights_A403_";
+var highlights_A403 = document.getElementById(url+id);
+highlights_A403.style.display = "none";
+highlights_A403.style.visibility = "hidden";
+
+}
+
+
+
+
+
+
+
+
+
+if (hex==="#ee8e8f") {
+$(document).unbind("click");    
+///A-B301
 
 var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
+var url="highlights_B301_";
+var highlights_B301 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'B-301'); 
+highlights_B301.style.display = "block";
+highlights_B301.style.visibility = "visible";
 $(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r4/plans/B301/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
+    e.stopImmediatePropagation()
+})
+
+
+
+
+
+
+}
+else
+{
+var id = img.alt; 
+var url="highlights_B301_";
+var highlights_B301 = document.getElementById(url+id);
+highlights_B301.style.display = "none";
+highlights_B301.style.visibility = "hidden";
+
+}
+
+
+
+
+
+
+if (hex==="#b9c3cc") {
+$(document).unbind("click");
+///B-302
+var id = img.alt; 
+var url="highlights_B302_";
+var highlights_B302 = document.getElementById(url+id);
+document.getElementById("true").setAttribute('title', 'B-302'); 
+highlights_B302.style.display = "block";
+highlights_B302.style.visibility = "visible";
+
+$(document).click(function(e){
+e.preventDefault();
+var loc = window.location;
+var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+var route= loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+var url =route+"menu.html"
+var level1="img/r4/plans/B302/"
+var level2=0
+var url =route+"menu.html?level1="+level1+"&level2= "+level2+" "  ;
+var myWindow = window.open(url , "_top", "");
+$(document).unbind("click");
     e.stopImmediatePropagation()
 })
 
 
 }
-else {
 
-var x = null;
+else
+{
 var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
+var url="highlights_B302_";
+var highlights_B302 = document.getElementById(url+id);
+highlights_B302.style.display = "none";
+highlights_B302.style.visibility = "hidden";
 
 }
 
 
-if (hex==="#6f9c9f") {
-
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
-$(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
-    e.stopImmediatePropagation()
-})
-
-
-}
-else {
-
-var x = null;
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
-
-}
-
-
-
-if (hex==="#6f9c9f") {
-
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
-$(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
-    e.stopImmediatePropagation()
-})
-
-
-}
-else {
-
-var x = null;
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
-
-}
-
-
-if (hex==="#36f9c9f") {
-
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
-$(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
-    e.stopImmediatePropagation()
-})
-
-
-}
-else {
-
-var x = null;
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
-
-}
-
-
-
-
-
-
-if (hex==="#436f9c9f") {
-
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
-$(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
-    e.stopImmediatePropagation()
-})
-
-
-}
-else {
-
-var x = null;
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
-
-}
-
-
-
-
-
-
-if (hex==="#739C9F") {
-
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "block";
-$(document).click(function(e){
-     e.preventDefault();
- $('#Modal_azul').modal();
- 
-    // si lo deseamos podemos eliminar el evento click
-    // una vez utilizado por primera vez
-    $(document).unbind("click");
-    e.stopImmediatePropagation()
-})
-
-
-}
-else {
-
-var x = null;
-var id = img.alt; 
-var url="highlights_blue_";
-var highlights_blue = document.getElementById(url+id);
-highlights_blue.style.display = "none";
-
-}
 
 
 
@@ -678,9 +671,7 @@ highlights_blue.style.display = "none";
 
     ThreeSixty.prototype.onMouseUp = function(e) {
         isMouseDown = false;
-        $downElem.trigger('up');
-         
-
+     
      
 
 
