@@ -17,6 +17,16 @@ draggable: true,
 });
 
 
+
+$('.play').click(function(){
+setInterval(play, 200);
+function play() {
+$threeSixty.nextFrame()
+}
+});
+
+
+
 $('.next').click(function(){
 $threeSixty.nextFrame();
 
@@ -25,9 +35,6 @@ $threeSixty.nextFrame();
 
 $('.prev').click(function(){
 $threeSixty.prevFrame();
-
-
-
 });
 
 
